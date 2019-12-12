@@ -1,0 +1,54 @@
+/* Make sure the page is using 100% of the vertical and horizontal space */
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    /* Make sure the <body> uses all of its available height and width */
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: rgb(66, 55, 55);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    /* These make the <body> use grid display and center the element's contents.
+    In other words, centers the whole page */
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+/* This is what was modified throughout the explanation */
+#main-section {
+    display: grid;
+    /* The grid has two columns, each being 370 pixels wide */
+    grid-template-columns: 370px 370px;
+    /* The grid has two rows, each taking up one half of the available height */
+    grid-template-rows: 1fr 1fr;
+    /* Center the grid contents vertically and horizontally */
+    justify-items: center;
+    align-items: center;
+    /* As the name suggests, put a gap of 20px between columns and rows */
+    row-gap: 20px;
+    column-gap: 20px;
+}
+
+/* Style each of the cells in the main grid, i.e., the four blocks in the page */
+.content-block {
+    /* Make the blocks' contents take up all of the available space */
+    height: 100%;
+    width: 100%;
+    border: 2px solid white;
+    border-radius: 5px;
+    /* Because we want to center the contents of each individual block vertically and
+    horizontally, we need to make these blocks use grid diplay themselves */
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+/* Adjust the margins of the paragraphs */
+.paragraph {
+    margin: 0px 5px 0px 5px;
+}
