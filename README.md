@@ -1,5 +1,4 @@
 # Repository for all the code used in my Medium articles.
-You can find my articles at https://medium.com/@soulsinporto.
 
 ## List of software development articles:
 
