@@ -17,3 +17,5 @@
 * [How to render your 3D Models on the Web with model-viewer](https://medium.com/swlh/how-to-render-your-3d-models-on-the-web-with-model-viewer-1c389a513855)
 
 * [How to create your first login page with HTML, CSS and JavaScript](https://medium.com/swlh/how-to-create-your-first-login-page-with-html-css-and-javascript-602dd71144f1)
+
+* [How to create a reusable Modal Dialog component in Angular 8](https://medium.com/@soulsinporto/how-to-create-a-reusable-modal-dialog-component-in-angular-8-241cc738d260?sk=f4b14e4336db802b137d4e53f223246d)
