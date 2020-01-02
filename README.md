@@ -20,4 +20,4 @@
 
 * [How to create a reusable Modal Dialog component in Angular 8](https://medium.com/@soulsinporto/how-to-create-a-reusable-modal-dialog-component-in-angular-8-241cc738d260?sk=f4b14e4336db802b137d4e53f223246d)
 
-* ["Easily visualize your data in Microsoft Power BI"](https://medium.com/@soulsinporto/easily-visualize-your-data-in-microsoft-power-bi-6e95f8abcb07?sk=34de3845adb841d017ddd73dedb73ba3)
+* [Easily visualize your data in Microsoft Power BI](https://medium.com/@soulsinporto/easily-visualize-your-data-in-microsoft-power-bi-6e95f8abcb07?sk=34de3845adb841d017ddd73dedb73ba3)
