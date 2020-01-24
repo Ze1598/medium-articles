@@ -25,3 +25,5 @@
 * [Record your internet speeds using Python](https://medium.com/@soulsinporto/record-your-internet-speeds-using-python-6a9827f8eec?source=friends_link&sk=e81a4854105858bf428d1db0954a9ea2)
 
 * [Introduction to Data Visualization with the Matplotlib library](https://medium.com/@soulsinporto/introduction-to-data-visualization-with-the-matplotlib-library-5ce6763b3fc9?source=friends_link&sk=b5a5bf4f898bc828b82925ca30a61d59)
+
+* [Create a worksheet of fake sales data in Microsoft Excel](https://medium.com/@soulsinporto/create-a-worksheet-of-fake-sales-data-in-microsoft-excel-c3f41b4e4016?source=friends_link&sk=44969c21f1876b7897b55dcb7825ffaa)
