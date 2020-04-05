@@ -29,3 +29,5 @@
 * [Create a worksheet of fake sales data in Microsoft Excel](https://medium.com/@soulsinporto/create-a-worksheet-of-fake-sales-data-in-microsoft-excel-c3f41b4e4016?source=friends_link&sk=44969c21f1876b7897b55dcb7825ffaa)
 
 * [Unpivot data with delimeters in Power Query](https://medium.com/@soulsinporto/unpivot-data-with-delimeters-in-power-query-57f57a3ddb4f)
+
+* [Count citations in a Word document with Python and Regular Expressions](https://medium.com/@soulsinporto/count-citations-in-a-word-document-with-python-and-regular-expressions-d068218c50b9)
