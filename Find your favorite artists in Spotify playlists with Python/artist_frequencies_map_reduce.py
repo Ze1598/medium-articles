@@ -1,6 +1,6 @@
 from functools import reduce
 
-
+# Refactor of this function -> https://gist.github.com/Ze1598/cd32d9867dac11a029937539bac91721#file-get_spotify_playlist_data-py-L58-L73
 def get_artist_counts(artists_info: List[List[Dict]]) -> Dict[str, int]:
     """
     Find the frequency of each artist featured in the playlist and return
