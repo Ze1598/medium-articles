@@ -31,3 +31,5 @@
 * [Unpivot data with delimeters in Power Query](https://medium.com/@soulsinporto/unpivot-data-with-delimeters-in-power-query-57f57a3ddb4f)
 
 * [Count citations in a Word document with Python and Regular Expressions](https://medium.com/@soulsinporto/count-citations-in-a-word-document-with-python-and-regular-expressions-d068218c50b9)
+
+* [Find your favorite artists in Spotify playlists with Python](https://medium.com/@soulsinporto/find-your-favorite-artists-in-spotify-playlists-with-python-420e70abd97b)
