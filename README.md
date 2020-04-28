@@ -33,3 +33,5 @@
 * [Count citations in a Word document with Python and Regular Expressions](https://medium.com/@soulsinporto/count-citations-in-a-word-document-with-python-and-regular-expressions-d068218c50b9)
 
 * [Find your favorite artists in Spotify playlists with Python](https://medium.com/@soulsinporto/find-your-favorite-artists-in-spotify-playlists-with-python-420e70abd97b)
+
+* [Unpivot a column of data with delimeters in pandas DataFrames](https://medium.com/@soulsinporto/unpivot-a-column-of-data-with-delimeters-in-pandas-dataframes-d1afa034705b?source=friends_link&sk=8655dcc819ebfb65a9018adf815d95b7)
