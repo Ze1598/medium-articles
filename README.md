@@ -35,3 +35,5 @@
 * [Find your favorite artists in Spotify playlists with Python](https://medium.com/@soulsinporto/find-your-favorite-artists-in-spotify-playlists-with-python-420e70abd97b)
 
 * [Unpivot a column of data with delimeters in pandas DataFrames](https://medium.com/@soulsinporto/unpivot-a-column-of-data-with-delimeters-in-pandas-dataframes-d1afa034705b?source=friends_link&sk=8655dcc819ebfb65a9018adf815d95b7)
+
+* [Group data using bins and categories with pandas](https://medium.com/@soulsinporto/group-data-using-bins-and-categories-with-pandas-836c9c9bbd46?source=friends_link&sk=0ac21528767c7a3e5504860202332a8f)
