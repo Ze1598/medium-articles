@@ -37,3 +37,5 @@
 * [Unpivot a column of data with delimeters in pandas DataFrames](https://medium.com/@soulsinporto/unpivot-a-column-of-data-with-delimeters-in-pandas-dataframes-d1afa034705b?source=friends_link&sk=8655dcc819ebfb65a9018adf815d95b7)
 
 * [Group data using bins and categories with pandas](https://medium.com/@soulsinporto/group-data-using-bins-and-categories-with-pandas-836c9c9bbd46?source=friends_link&sk=0ac21528767c7a3e5504860202332a8f)
+
+* [Unpivot a column of delimited data with R](https://medium.com/@soulsinporto/unpivot-a-column-of-delimited-data-with-r-65139942289b?source=friends_link&sk=77f5cc0d2fa55e900cbda729b9b99d24)
