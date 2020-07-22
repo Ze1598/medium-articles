@@ -62,3 +62,7 @@ if __name__ == "__main__":
     })
     person_query = "INSERT INTO person(id, name, house_id) VALUES %s"
     insert_data(person_query, connection, cursor, person_df, 100)
+
+    # Close all connections to the database
+    connection.close()
+    cursor.close()

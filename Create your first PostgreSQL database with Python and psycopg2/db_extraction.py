@@ -95,3 +95,6 @@ if __name__ == "__main__":
     person_address_df = get_data_from_db(query, connection, cursor, person_address_df, col_names)
     print(person_address_df)
     
+    # Close all connections to the database
+    connection.close()
+    cursor.close()
