@@ -39,3 +39,5 @@
 * [Group data using bins and categories with pandas](https://medium.com/@soulsinporto/group-data-using-bins-and-categories-with-pandas-836c9c9bbd46?source=friends_link&sk=0ac21528767c7a3e5504860202332a8f)
 
 * [Unpivot a column of delimited data with R](https://medium.com/@soulsinporto/unpivot-a-column-of-delimited-data-with-r-65139942289b?source=friends_link&sk=77f5cc0d2fa55e900cbda729b9b99d24)
+
+* [Create your first PostgreSQL database in Python with psycopg2](https://medium.com/@soulsinporto/create-your-first-postgresql-database-in-python-with-psycopg2-9d0986e0e9ac?source=friends_link&sk=82088989761ff546e50118d9b19c6af7)
