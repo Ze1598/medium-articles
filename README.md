@@ -41,3 +41,5 @@
 * [Unpivot a column of delimited data with R](https://medium.com/@soulsinporto/unpivot-a-column-of-delimited-data-with-r-65139942289b?source=friends_link&sk=77f5cc0d2fa55e900cbda729b9b99d24)
 
 * [Create your first PostgreSQL database in Python with psycopg2](https://medium.com/@soulsinporto/create-your-first-postgresql-database-in-python-with-psycopg2-9d0986e0e9ac?source=friends_link&sk=82088989761ff546e50118d9b19c6af7)
+
+* [How to properly calculate text size in PIL images](https://medium.com/@soulsinporto/how-to-properly-calculate-text-size-in-pil-images-17a2cc6f51fd?source=friends_link&sk=3b16f1f233a88c3d2e83325a1089b1fc)
