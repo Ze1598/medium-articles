@@ -43,3 +43,5 @@
 * [Create your first PostgreSQL database in Python with psycopg2](https://medium.com/@soulsinporto/create-your-first-postgresql-database-in-python-with-psycopg2-9d0986e0e9ac?source=friends_link&sk=82088989761ff546e50118d9b19c6af7)
 
 * [How to properly calculate text size in PIL images](https://medium.com/@soulsinporto/how-to-properly-calculate-text-size-in-pil-images-17a2cc6f51fd?source=friends_link&sk=3b16f1f233a88c3d2e83325a1089b1fc)
+
+* [Update a DataFrame based on common values of two DataFrames](https://medium.com/@soulsinporto/update-a-dataframe-based-on-common-values-of-two-dataframes-eb4676edece0?source=friends_link&sk=61450d20c2436eb04a4f1aa6d7f13e6c)
