@@ -2,7 +2,7 @@ import re
 import datetime
 import pandas as pd
 
-PATTERN = r'((^([\d]+)([\.]?)([\d]+))|^([\d]+))( - )(.*)'
+PATTERN = r'(^([\d]+)([\.]?)([\d]*))( - )(.*)'
 
 # Load text
 with open("expenses.txt", "r") as f:
@@ -13,7 +13,7 @@ whole_txt = "".join(expenses_txt)
 # Find all the expense matches
 matches = re.findall(PATTERN, whole_txt, flags=re.MULTILINE)
 # Extract the relevant match information
-expenses = [ [m[7], m[0]] for m in matches ]
+expenses = [ [m[5], m[0]] for m in matches ]
 
 # Create a DF for the expenses
 df = pd.DataFrame(data=expenses)
