@@ -45,3 +45,5 @@
 * [How to properly calculate text size in PIL images](https://medium.com/@soulsinporto/how-to-properly-calculate-text-size-in-pil-images-17a2cc6f51fd?source=friends_link&sk=3b16f1f233a88c3d2e83325a1089b1fc)
 
 * [Update a DataFrame based on common values of two DataFrames](https://medium.com/@soulsinporto/update-a-dataframe-based-on-common-values-of-two-dataframes-eb4676edece0?source=friends_link&sk=61450d20c2436eb04a4f1aa6d7f13e6c)
+
+* [Using RegEx to extract expenses information from a text file](https://medium.com/@soulsinporto/using-regex-to-extract-expenses-information-from-a-text-file-e1ac9a8452a5?source=friends_link&sk=600979411f8238e279859a0ec38757b2)
