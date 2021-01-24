@@ -1,9 +1,0 @@
-Over the course of next week I will be posting a mini-series on Medium about Data Analysis with Python. It is a 5-part series in which I explain how to tackle different data transformations using the 2020 Stack Overflow Developer Survey results, and at the end move the results from a local environment to an Azure DataBricks workspace in the cloud.
-
-Each part analyses a different column of data, i.e., each part goes through a different kind of data transformation, to create a Plotly visualization at the end. The result of each part will be a notebook with these contents.
-
-While the first four parts result in a notebook each, the fifth part is about moving those notebooks from a local Jupyter notebook environment to an Azure DataBricks workspace, i.e., the cloud.
-
-The first part will be available on Monday, and a new part will release everyday until Friday.
-
-#pythonprogramming #dataanalysis #databricks #cloud
