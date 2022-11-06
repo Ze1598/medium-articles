@@ -1,0 +1,98 @@
+﻿// EXPLAIN
+EXPLAIN
+SELECT TOP 10 *
+FROM StormEvents
+
+
+// Variables
+let state = "FLORIDA";
+let year = 2007;
+StormEvents
+| where State == state and datetime_part("year", StartTime) == year
+
+let floridaEvents = StormEvents
+| where State == "FLORIDA"
+| project EventId
+;
+StormEvents
+| where EventId in (floridaEvents)
+
+
+// take
+StormEvents
+| take 100
+
+
+// project
+StormEvents
+| project EventId, StartTime, State 
+| take 100
+
+
+// extend
+StormEvents
+| extend 
+    TotalInjuries = InjuriesDirect + InjuriesIndirect,
+    TotalDeaths = DeathsDirect + DeathsIndirect
+| project EventId, TotalInjuries, TotalDeaths
+| order by TotalInjuries desc, TotalDeaths desc
+| take 100
+
+
+// summarize
+StormEvents
+| summarize count() by State
+
+
+// arg_max, arg_min
+StormEvents
+| extend TotalInjuries = InjuriesDirect + InjuriesIndirect
+| summarize arg_max(TotalInjuries, *) by State
+
+StormEvents
+| extend TotalDeaths = DeathsDirect + DeathsIndirect
+| summarize arg_min(TotalDeaths, EventId, StartTime) by State
+
+
+// join
+let floridaEvents = StormEvents
+| where State == "FLORIDA"
+| project EventId
+;
+StormEvents
+| join kind=inner floridaEvents on $left.EventId == $right.EventId
+
+
+// mv-expand
+datatable (colA:int, colB:dynamic) [ 
+    1,dynamic([10, 20]),
+    2,dynamic(['a', 'b']),
+    3,dynamic(['c', '30']),
+]
+| mv-expand colB
+
+
+// bag_unpack
+datatable(colA: int, colB:dynamic) [
+    1, dynamic({"Name": "John", "Age":20}),
+    2, dynamic({"Name": "Dave", "Age":40, "IsMarried": "Yes"}),
+    3, dynamic({"Name": "Jasmine", "Age":30, "IsMarried": "No"})
+]
+| evaluate bag_unpack(colB)
+
+
+// render
+StormEvents
+| summarize c = count() by State
+| order by c desc
+| take 10
+| project State, c
+| render barchart
+
+StormEvents
+| where State == "FLORIDA"
+| extend d = format_datetime(StartTime, "dd/MM/yyyy")
+| summarize c = count() by d
+| project d, c
+| order by d asc
+| render linechart
