@@ -1,0 +1,164 @@
+///////////////////////////// parse text
+
+datatable(NetworkEvent:string) [
+    "Backend periodic scan completed, 0 critical vulnerabilities were found.",
+    "Admin periodic scan completed, 1 critical vulnerabilities were found.",
+    "Gateway periodic scan completed, 6 critical vulnerabilities were found."
+]
+| extend 
+    MachineType = tostring(split(NetworkEvent, " ")[0])
+    ,NumVulnerabilities = extract("\\d", 0, NetworkEvent, typeof(long))
+
+
+datatable(NetworkEvent:string) [
+    "Backend periodic scan completed, 0 critical vulnerabilities were found.",
+    "Admin periodic scan completed, 1 critical vulnerabilities were found.",
+    "Gateway periodic scan completed, 6 critical vulnerabilities were found."
+]
+| parse NetworkEvent with MachineType:string  " periodic scan completed, " NumVulnerabilities:long " critical vulnerabilities were found."
+
+///////////////////////////// partition
+
+datatable(RowId:int, DetectiveId:string, LoginTime:datetime) [
+    1, "Michael", datetime("2023-09-10T21:00:00Z"),
+    2, "Dwight", datetime("2023-09-10T21:05:00Z"),
+    3, "Michael", datetime("2023-09-12T23:00:00Z"),
+    4, "Dwight", datetime("2023-09-13T09:30:00Z"),
+    5, "Dwight", datetime("2023-09-27T11:00:00Z")
+]
+| partition hint.strategy=native by DetectiveId
+    (
+        order by RowId asc
+        | extend DaysSinceLastLogin = datetime_diff('day', LoginTime, prev(LoginTime))
+    )
+
+
+///////////////////////////// scan
+
+range x from 1 to 5 step 1 
+| scan declare (cumulative_x:long=0) with 
+(
+    step s1: true => cumulative_x = x + s1.cumulative_x;
+)
+
+
+datatable(RowId:int, DetectiveId:string, ActivityTimestamp:datetime, UserActivity:string) [
+    1, "Michael", datetime("2023-01-10T10:00:00Z"), "User entered the system",
+    2, "Dwight", datetime("2023-01-10T16:00:00Z"), "User entered the system",
+    3, "Michael", datetime("2023-01-10T20:00:00Z"), "User assigned a case",
+    4, "Dwight", datetime("2023-01-10T22:30:00Z"), "User assigned a case",
+    5, "Dwight", datetime("2023-09-27T11:00:00Z"), "User entered the system",
+    6, "Dwight", datetime("2023-09-27T11:05:00Z"), "User completed a case"
+]
+| partition hint.strategy=native by DetectiveId
+    (
+        order by RowId asc 
+        | scan declare(IsLastActivityOfDay:string, FirstLoginOfDay:datetime) with (
+            step initialTimestamp: true => FirstLoginOfDay = iif(UserActivity == 'User entered the system', ActivityTimestamp, datetime(null));
+            step lastActivity: isempty(FirstLoginOfDay) => 
+                IsLastActivityOfDay = iif(isempty(FirstLoginOfDay), "Yes", "No")
+                ,FirstLoginOfDay = iif(isempty(FirstLoginOfDay), initialTimestamp.FirstLoginOfDay, FirstLoginOfDay);
+        )
+    )
+| where FirstLoginOfDay != datetime(null)
+
+
+
+///////////////////////////// graph operators
+
+// https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/graph-match-operator
+let SocialNetwork =
+    datatable(Person: string, Connection: string)
+    [
+        'You', 'Gaia Budskott',  
+        'Professor Smoke', 'You',
+        'Scott Hanselman', 'Satya Nadella',
+        'Satya Nadella', 'Bill Gates',
+        'Professor Smoke', 'Scott Hanselman',
+        'Gaia Budskott', 'Krypto',
+        'You', 'El Puente',
+    ]
+;
+let People = 
+    datatable (Person: string, Title: string)
+    [
+        'You',             'Detective',
+        'Professor Smoke', 'Professor',
+        'Gaia Budskott',   'Mayor',
+        'Satya Nadella',   'Microsoft CEO',
+        'Scott Hanselman', 'Technology Evangelist',
+        'Samuel Impson',   'Captain',
+        'Stas Fistuko',    'Agent',
+        'Krypto',          'Criminal',
+        'Bill Gates',      'Microsoft Founder',
+    ]
+;
+SocialNetwork
+// Use each record in SocialNetwork to identify edges, and join to People its Person column is used as the nodes
+| make-graph Person --> Connection with People on Person
+// relate the Person to the connection, counting only direct relationships
+| graph-match (start)-[relation]-(other)
+    project Path=strcat(relation.Connection, ' (', start.Title, ')', ' --> ', relation.Person, ' (', other.Title, ')')
+
+
+let SocialNetwork =
+    datatable(Person: string, Connection: string)
+    [
+        'You', 'Gaia Budskott',  
+        'Professor Smoke', 'You',
+        'Scott Hanselman', 'Satya Nadella',
+        'Satya Nadella', 'Bill Gates',
+        'Professor Smoke', 'Scott Hanselman',
+        'Gaia Budskott', 'Krypto',
+        'You', 'El Puente',
+    ]
+;
+let People = 
+    datatable (Person: string, Title: string)
+    [
+        'You',             'Detective',
+        'Professor Smoke', 'Professor',
+        'Gaia Budskott',   'Mayor',
+        'Satya Nadella',   'Microsoft CEO',
+        'Scott Hanselman', 'Technology Evangelist',
+        'Samuel Impson',   'Captain',
+        'Stas Fistuko',    'Agent',
+        'Krypto',          'Criminal',
+        'Bill Gates',      'Microsoft Founder',
+    ]
+;
+SocialNetwork
+// Use each record in SocialNetwork to identify edges, and join to People its Person column is used as the nodes
+| make-graph Person --> Connection with People on Person
+// relate the Person to the connection, counting only up relationships with 1 to 6 edges involved
+| graph-match (start)-[relation*1..6]-(other)
+    where start.Person == 'You' and other.Person == 'Bill Gates'
+    project Path=strcat(relation.Connection, '-->', relation.Person)
+ | project Path
+
+
+
+
+
+///////////////////////////// anomaly detection
+
+// https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/series-decompose-anomalies-function
+// Generate a series with weekly seasonality and onlgoing trend
+let ts =
+    range t from 1 to 24*7*5 step 1 
+    | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 
+    | extend y = 2*rand() + iff((t/24)%7>=5, 5.0, 15.0) - (((t%24)/10)*((t%24)/10)) + t/72.0
+    | extend y=iff(t==150 or t==200 or t==780, y-8.0, y) // add some dip outliers
+    | extend y=iff(t==300 or t==400 or t==600, y+8.0, y) // add some spike outliers
+    | summarize Timestamp=make_list(Timestamp, 10000),y=make_list(y, 10000)
+;
+ts 
+// Aonamly detection threshold set to 2.5
+// -1 = auto detect seasonality
+// linefit algorithm appropriate due to trend in the timeseries
+| extend series_decompose_anomalies(y, 2.5, -1, 'linefit')
+| render timechart
+// Generates 3 anomaly detection time series
+// ad_flag: +1/ -1/ 0 marking up/down/no anomaly respectively
+// ad_score: Anomaly score
+// baseline: The predicted value of the series, according to the decomposition
