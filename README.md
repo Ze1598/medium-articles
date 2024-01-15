@@ -49,3 +49,5 @@
 * [Using RegEx to extract expenses information from a text file](https://medium.com/@soulsinporto/using-regex-to-extract-expenses-information-from-a-text-file-e1ac9a8452a5?source=friends_link&sk=600979411f8238e279859a0ec38757b2)
 
 * [Custom sort a pandas Dataframe with pd.Categorical](https://soulsinporto.medium.com/custom-sort-a-pandas-dataframe-with-pd-categorical-c4eec8343957)
+
+* [KQL highlights from the Kusto Detective Agency Season 2](https://medium.com/@soulsinporto/kql-highlights-from-the-kusto-detective-agency-season-2-03838aca9805)
